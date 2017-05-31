@@ -1,0 +1,34 @@
+************** Title ***********************
+Publish the same link posts from Tumblr to Facebook Page with proper tags convertion
+
+************** Description ***********************
+Message pattern is {Link URL} {Link Description} {Hashtags}. Make sure you've provided Link Description because some websites may not provide correct META tags. Tumblr tags are converted to #hashtags (i.e. #tag1, #tag2, #tag3)
+
+************** Trigger ***********************
+Tumblr
+New link post
+
+************** Flter code ***********************
+// convert tumblr tags to hashcodes
+var extractTags = function(tags:string) {
+  if(tags.length == 0){
+    return "";
+  }
+  var str = [];
+  var splittedTags = tags.split(", ");
+  for(var t in splittedTags){
+    str.push(splittedTags[t]);
+  }
+  return "#"+ str.join(" #");
+}
+
+var message = Tumblr.newLinkPost.Description + " " + extractTags(Tumblr.newLinkPost.Tags);
+
+// compose twitter text
+var tweet = Tumblr.newLinkPost.LinkUrl + " " + message;
+Twitter.postNewTweet.setTweet(tweet);
+
+
+************** Action 1 ***********************
+Twitter
+Post a tweet
