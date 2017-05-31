@@ -2,7 +2,7 @@
 Publish link for your text posts from Tumblr to Tweeter with proper tags convertion
 
 ************** Description ***********************
-Tumblr tags are converted to #hashtags (i.e. #tag1, #tag2, #tag3)
+Post pattern is: {link to Tumblr} {hashtags}. Tumblr tags are converted to #hashtags (i.e. #tag1, #tag2, #tag3). Warning - Tweeter card will be generated only if Tumbler post contains both Title and Content, and they are different.
 
 ************** Trigger ***********************
 Tumblr
