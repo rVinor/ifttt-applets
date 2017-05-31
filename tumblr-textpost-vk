@@ -2,8 +2,7 @@
 Publish link for your text posts from Tumblr to VK with proper tags convertion
 
 ************** Description ***********************
-Post pattern is: hashtags as message, link to Tumblr as attached link. Tumblr tags are converted to #hashtags (i.e. #tag1, #tag2, #tag3). Please add your owner_id and access_token as URL parameters
-
+Post pattern is: {Title} {Hashtags} as message, link to Tumblr as attached link. Tumblr tags are converted to #hashtags (i.e. #tag1, #tag2, #tag3). Please add your owner_id and access_token as URL parameters
 ************** Trigger ***********************
 Tumblr
 New text post
@@ -32,7 +31,7 @@ var extractTags = function(tags:string) {
   return "#"+ str.join(" #");
 }
 
-var message = extractTags(Tumblr.newTextPost.Tags);
+var message = Tumblr.newTextPost.Title + " " + extractTags(Tumblr.newTextPost.Tags);
 
 // Create VK post
 var body = { "attachments" : Tumblr.newTextPost.Url, "message" : message };
