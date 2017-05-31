@@ -2,7 +2,7 @@
 Publish link for your text posts from Tumblr to VK with proper tags convertion
 
 ************** Description ***********************
-Tumblr tags are converted to #hashtags (i.e. #tag1, #tag2, #tag3). Please add your owner_id and access_token as URL parameters
+Post pattern is: hashtags as message, link to Tumblr as attached link. Tumblr tags are converted to #hashtags (i.e. #tag1, #tag2, #tag3). Please add your owner_id and access_token as URL parameters
 
 ************** Trigger ***********************
 Tumblr
