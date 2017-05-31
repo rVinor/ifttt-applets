@@ -1,0 +1,39 @@
+************** Title ***********************
+Publish the same link posts from Instagram to VK with proper tags convertion
+
+************** Description ***********************
+Message pattern is {CaptionNoTag}, link to Instagram page is added as attachment. In order to work with VK wall.post API with owner_id and access_token should be set as URL parameters
+
+************** Trigger ***********************
+Instagram
+New photo by you with specific hashtag
+
+Custom parameters:
+Tag - Chosen by user
+
+************** Flter code ***********************
+// encode object to POST body
+var serialize = function(obj:any) {
+  var str = [];
+  for(var p in obj)
+    if (obj.hasOwnProperty(p)) {
+      str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+    }
+  return str.join("&");
+}
+
+var message = Instagram.newPhotoByYouTagged.CaptionNoTag;
+
+// Create VK post
+var body = { "attachments" : Instagram.newPhotoByYouTagged.Url, "message" : message };
+MakerWebhooks.makeWebRequest.setBody(serialize(body));
+
+
+************** Action 1 ***********************
+Maker Webhooks
+
+Custom parameters:
+URL - Chosen by user
+URL default - https://api.vk.com/method/wall.post?owner_id=&v=5.52&access_token=
+Method - POST
+Content Type - application/x-www-form-urlencoded
