@@ -1,0 +1,51 @@
+************** Title ***********************
+Publish link for your text posts from Tumblr to VK with proper tags convertion
+
+************** Description ***********************
+Tumblr tags are converted to #hashtags (i.e. #tag1, #tag2, #tag3). Please add your owner_id and access_token as URL parameters
+
+************** Trigger ***********************
+Tumblr
+New text post
+
+************** Flter code ***********************
+// encode object to POST body
+var serialize = function(obj:any) {
+  var str = [];
+  for(var p in obj)
+    if (obj.hasOwnProperty(p)) {
+      str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+    }
+  return str.join("&");
+}
+
+// convert tumblr tags to hashcodes
+var extractTags = function(tags:string) {
+  if(tags.length == 0){
+    return "";
+  }
+  var str = [];
+  var splittedTags = tags.split(", ");
+  for(var t in splittedTags){
+    str.push(splittedTags[t]);
+  }
+  return "#"+ str.join(" #");
+}
+
+var message = extractTags(Tumblr.newTextPost.Tags);
+
+// Create VK post
+var body = { "attachments" : Tumblr.newTextPost.Url, "message" : message };
+MakerWebhooks.makeWebRequest.setBody(serialize(body));
+
+
+************** Action 1 ***********************
+Maker Webhooks
+
+Custom parameters:
+URL - Chosen by user
+URL default - https://api.vk.com/method/wall.post?owner_id=&v=5.52&access_token=
+Method - POST
+Content Type - application/x-www-form-urlencoded
+
+
