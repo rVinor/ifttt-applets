@@ -1,0 +1,44 @@
+************** Title ***********************
+Publish link for your text posts from Tumblr to Tweeter with proper tags convertion
+
+************** Description ***********************
+Tumblr tags are converted to #hashtags (i.e. #tag1, #tag2, #tag3)
+
+************** Trigger ***********************
+Tumblr
+New text post
+
+************** Flter code ***********************
+// encode object to POST body
+var serialize = function(obj:any) {
+  var str = [];
+  for(var p in obj)
+    if (obj.hasOwnProperty(p)) {
+      str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+    }
+  return str.join("&");
+}
+
+// convert tumblr tags to hashcodes
+var extractTags = function(tags:string) {
+  if(tags.length == 0){
+    return "";
+  }
+  var str = [];
+  var splittedTags = tags.split(", ");
+  for(var t in splittedTags){
+    str.push(splittedTags[t]);
+  }
+  return "#"+ str.join(" #");
+}
+
+var message = extractTags(Tumblr.newTextPost.Tags);
+
+// compose twitter text
+var tweet = Tumblr.newTextPost.Url + " " + message;
+Twitter.postNewTweet.setTweet(tweet);
+
+
+************** Action 1 ***********************
+Twitter
+Post a tweet
