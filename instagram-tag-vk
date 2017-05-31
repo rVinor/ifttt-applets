@@ -1,5 +1,5 @@
 ************** Title ***********************
-Publish the same link posts from Instagram to VK with proper tags convertion
+If new photo with specific hashtag is uploaded to instagram then publish link for it to VK
 
 ************** Description ***********************
 Message pattern is {CaptionNoTag}, link to Instagram page is added as attachment. In order to work with VK wall.post API with owner_id and access_token should be set as URL parameters
@@ -22,7 +22,7 @@ var serialize = function(obj:any) {
   return str.join("&");
 }
 
-var message = Instagram.newPhotoByYouTagged.CaptionNoTag;
+var message = Instagram.newPhotoByYouTagged.CaptionNoTag + " "+ Instagram.newPhotoByYouTagged.Url;
 
 // Create VK post
 var body = { "attachments" : Instagram.newPhotoByYouTagged.Url, "message" : message };
