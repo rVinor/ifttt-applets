@@ -1,5 +1,5 @@
 ************** Title ***********************
-Publish the same link posts from Tumblr to Facebook Page with proper tags convertion
+Publish the same link posts from Tumblr to Twitter with proper tags convertion
 
 ************** Description ***********************
 Message pattern is {Link URL} {Link Description} {Hashtags}. Make sure you've provided Link Description because some websites may not provide correct META tags. Tumblr tags are converted to #hashtags (i.e. #tag1, #tag2, #tag3)
