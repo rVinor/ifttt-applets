@@ -2,7 +2,7 @@
 Copy Facebook Page status with #xpost to VK with link to the page
 
 ************** Description ***********************
-Post pattern is: status text as message, link to Facebook Page as attached link. Tumblr tags are converted to #hashtags (i.e. #tag1, #tag2, #tag3). Please add your owner_id and access_token as URL parameters
+Post pattern is: status text as message, link to Facebook Page as attached link. Please add your owner_id and access_token as URL parameters
 
 ************** Trigger ***********************
 Facebook Pages
