@@ -22,7 +22,7 @@ var extractTags = function(tags:string) {
   return "#"+ str.join(" #");
 }
 
-var message = Tumblr.newLinkPost.Description + " " + extractTags(Tumblr.newLinkPost.Tags);
+var message = Tumblr.newLinkPost.Description + " " + extractTags(Tumblr.newLinkPost.Tags) + " #xpost";
 
 // set facebook message
 FacebookPages.createLinkPage.setMessage(message);
