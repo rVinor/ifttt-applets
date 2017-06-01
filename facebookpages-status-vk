@@ -1,0 +1,37 @@
+************** Title ***********************
+Copy Facebook Page status with #xpost to VK with link to the page
+
+************** Description ***********************
+Post pattern is: status text as message, link to Facebook Page as attached link. Tumblr tags are converted to #hashtags (i.e. #tag1, #tag2, #tag3). Please add your owner_id and access_token as URL parameters
+
+************** Trigger ***********************
+Facebook Pages
+New status message with hashtag on page
+
+Hashtag - #xpost
+
+************** Flter code ***********************
+// encode object to POST body
+var serialize = function(obj:any) {
+  var str = [];
+  for(var p in obj)
+    if (obj.hasOwnProperty(p)) {
+      str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+    }
+  return str.join("&");
+}
+
+// Create VK post
+var body = { "attachments" : FacebookPages.newHashtagMessageByPage.PageUrl, "message" : FacebookPages.newHashtagMessageByPage.MessageNoHashtag };
+MakerWebhooks.makeWebRequest.setBody(serialize(body));
+
+************** Action 1 ***********************
+Maker Webhooks
+
+Custom parameters:
+URL - Chosen by user
+URL default - https://api.vk.com/method/wall.post?owner_id=&v=5.52&access_token=
+Method - POST
+Content Type - application/x-www-form-urlencoded
+
+
