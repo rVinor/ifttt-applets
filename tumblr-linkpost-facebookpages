@@ -1,9 +1,8 @@
 ************** Title ***********************
-Publish the same link posts from Tumblr to Facebook Page with proper tags convertion
+Copy Tumblr Link post to Facebook page with proper tags convertion and #xpost
 
 ************** Description ***********************
-Message pattern is {Link Description} {Hashtags}, link is added as attachment. Make sure you've provided LinkDescription because some websites may not provide correct META tags. Tumblr tags are converted to #hashtags (i.e. #tag1, #tag2, #tag3)
-
+Message pattern is "{Link URL} {Link Description} {Hashtags} #xpost". Make sure you've provided Link Description because some websites may not provide correct META tags. Tumblr tags are converted to #hashtags (i.e. #tag1, #tag2, #tag3)
 ************** Trigger ***********************
 Tumblr
 New link post
